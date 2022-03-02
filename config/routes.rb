@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'application#home'
 
+  get '/register', to: 'users#new'
+
   resources :categories
   resources :chores
   resources :users
