@@ -4,9 +4,15 @@ class UsersController < ApplicationController
     end
 
     def create
-       if @user = User.create(user_params)
+       @user = User.create(user_params)
+       if @user.valid?
          session[:user_id] = @user.id
          redirect_to user_path(@user)
+       else
+         if user_params[:email] == ""
+            flash[:error] = "Please provide an email address"
+         end
+         render 'new'
        end
     end
 

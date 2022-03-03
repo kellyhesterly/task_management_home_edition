@@ -1,5 +1,9 @@
 <h1>Register</h1>
 
+<% flash.each do |type, msg| %>
+    <div class="alert alert-danger"><%= msg %></div><br><br>
+<% end %>
+
 <%= form_for @user do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %><br><br>
@@ -11,4 +15,6 @@
     <%= f.password_field :password %><br><br>
 
     <%= f.submit "Register" %><br>
+
+
 <% end %>
