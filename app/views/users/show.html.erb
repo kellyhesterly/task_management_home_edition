@@ -1,1 +1,8 @@
 <h1>Welcome <%= @user.name %>!</h1>
+
+Here are the list of chores you have for the week: 
+<% @user.chores.each do |chore| %>
+   <ul>
+    <%= chore.name %>
+   </ul>
+<% end %>
