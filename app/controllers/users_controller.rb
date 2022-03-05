@@ -7,10 +7,16 @@ class UsersController < ApplicationController
        @user = User.create(user_params)
        if @user.valid?
          session[:user_id] = @user.id
-         redirect_to user_path(@user), :flash => { :success => "You have registered successfully!" }
+         redirect_to user_path(@user), :flash => { :success => "You have registered successfully" }
        else
          if user_params[:email] == ""
             flash[:error] = "Please provide an email address"
+         elsif user_params[:password] == ""
+            flash[:error] = "Please provide a password"
+         elsif user_params[:password].length < 5
+            flash[:error] = "Please provide a password with at least 5 characters"
+         elsif User.exists?(:email => @user.email)
+            flash[:error] = "This email is already in use.  Please provide a different email"
          end
          render 'new'
        end
