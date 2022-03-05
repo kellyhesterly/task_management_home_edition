@@ -1,5 +1,10 @@
 <h1>Welcome <%= @user.name %>!</h1>
 
+<% flash.each do |type, msg| %>
+    <div class="alert alert-danger"><%= msg %></div><br><br>
+<% end %>
+
+
 Here are the list of chores you have for the week: 
 <% @user.chores.each do |chore| %>
    <ul>

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
        @user = User.create(user_params)
        if @user.valid?
          session[:user_id] = @user.id
-         redirect_to user_path(@user)
+         redirect_to user_path(@user), :flash => { :success => "You have registered successfully!" }
        else
          if user_params[:email] == ""
             flash[:error] = "Please provide an email address"
