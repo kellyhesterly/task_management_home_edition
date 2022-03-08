@@ -3,8 +3,7 @@ class User < ApplicationRecord
     has_many :chores
     has_many :categories, through: :chores
 
-    validates :name, :email, :password, presence: true
-    validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
-    validates :password, length: {minimum: 5}, on: :create
-    validates :email, uniqueness: true
+    validates :name, presence: true
+    validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+    validates :password, presence: true, length: {minimum: 5}, on: :create
 end
