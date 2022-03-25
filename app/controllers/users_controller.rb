@@ -21,6 +21,8 @@ class UsersController < ApplicationController
             flash[:error] = "Please provide an email address"
          elsif user_params[:password] == ""
             flash[:error] = "Please provide a valid password"
+         elsif user_params[:name] == ""
+            flash[:error] = "Please provide a name"
          elsif user_params[:password].length < 5
             flash[:error] = "Please provide a password with at least 5 characters"
          elsif User.exists?(:email => @user.email)
