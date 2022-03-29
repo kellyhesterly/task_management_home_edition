@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
 
+  get '/:users/:id/:chores', to: 'chores#index'
+
+
   resources :categories
   resources :chores
   resources :users
